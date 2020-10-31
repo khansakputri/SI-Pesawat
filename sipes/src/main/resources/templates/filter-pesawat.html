@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Pesawat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+    <nav th:replace="fragments/fragment :: navbar('Filter Pesawat')"></nav>
+    <br>
+    <div class="container-fluid">
+        <form th:action="@{/pesawat/filter}" method="GET">
+            Penerbangan : <br>
+            <select name="idPenerbangan" class="form-control">
+                <option value="0"> -- </option>
+                <option th:each="penerbangan : ${listPenerbangan}"
+                        th:value="${penerbangan.id}"
+                        th:text="${penerbangan.nomor_penerbangan}"></option>
+            </select>
+            Tipe : <br>
+            <select name="idTipe" class="form-control">
+                <option value="0"> -- </option>
+                <option th:each="tipe : ${listTipe}"
+                        th:value="${tipe.id}"
+                        th:text="${tipe.nama}"></option>
+            </select>
+            Teknisi : <br>
+            <select name="idTeknisi" class="form-control">
+                <option value="0"> -- </option>
+                <option th:each="teknisi : ${listTeknisi}"
+                        th:value="${teknisi.id}"
+                        th:text="${teknisi.nama}"></option>
+            </select>
+            <br><br>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>No Seri</th>
+                <th>Jenis Pesawat</th>
+                <th>Maskapai</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:if="${size != 0}">
+                <tr th:each="pesawat, iterationStatus: ${listPesawat}">
+                    <td th:text="${pesawat.id}"></td>
+                    <td th:text="${pesawat.nomor_seri}"></td>
+                    <td th:text="${pesawat.jenis_pesawat}"></td>
+                    <td th:text="${pesawat.maskapai}"></td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

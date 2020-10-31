@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Pesawat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('View Pesawat')"></nav>
+<div class="container-fluid">
+    <section>
+        <div class="align-content-center">
+            <h2 style="text-align: center; margin-top: 3vw">Detail Pesawat</h2><br>
+            <div content="justify-content-center">
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Nomor Seri Pesawat</div>
+                    <div class="col-md-4" th:text="': ' + ${pesawat.nomor_seri}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Jenis Pesawat</div>
+                    <div class="col-md-4" th:text="': ' + ${pesawat.jenis_pesawat}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Tipe Pesawat</div>
+                    <div class="col-md-4" th:text="': ' + ${namaTipe}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Maskapai</div>
+                    <div class="col-md-4" th:text="': ' + ${pesawat.maskapai}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Tempat Dibuat</div>
+                    <div class="col-md-4" th:text="': ' + ${pesawat.tempat_dibuat}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Tanggal Dibuat</div>
+                    <div class="col-md-4" th:text="': ' + ${pesawat.tanggal_dibuat}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+<!--                <p th:text="'Nomor Seri Pesawat: ' + ${pesawat.nomor_seri}"></p>-->
+<!--                <p th:text="'Jenis Pesawat: ' + ${pesawat.jenis_pesawat}"></p>-->
+<!--                <p th:text="'Nama Tipe Pesawat: ' + ${namaTipe}"></p>-->
+<!--                <p th:text="'Maskapai: ' + ${pesawat.maskapai}"></p>-->
+<!--                <p th:text="'Tempat dibuat: ' + ${pesawat.tempat_dibuat}"></p>-->
+<!--                <p th:text="'Tanggal dibuat: ' + ${pesawat.tanggal_dibuat}"></p>-->
+
+            <br style="margin-top: 3vw">
+                <div class="container">
+                    <div class="row">
+                        <div class="col" style="margin-right: 2vw">
+                            <h4 style="text-align: center">Daftar Teknisi</h4>
+                            <br>
+                            <table class="table">
+                                <thead  style="background-color: #3d94d2">
+                                <tr style="color: white">
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Nomor Telepon</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="teknisi, iterationStatus : ${listTeknisi}"
+                                    th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+                                    <td th:text="${teknisi.id}"></td>
+                                    <td th:text="${teknisi.nama}"></td>
+                                    <td th:text="${teknisi.nomor_telepon}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="col">
+                            <h4 style="text-align: center">Daftar Penerbangan</h4>
+                            <br>
+                            <div class="py-1">
+                                <h6>Tambah Penerbangan</h6>
+                                <form th:action="@{/pesawat/}+${pesawat.id}+@{/tambah-penerbangan}" method="POST">
+                                    <div class="d-flex flex-row">
+                                        <div class="justify-content-center">
+                                        <select name="penerbanganId" class="form-control" style="width: 15vw">
+                                            <option value="0"> Nama Penerbangan </option>
+                                            <option th:each="p : ${listPenerbangan}"
+                                                    th:value="${p.id}"
+                                                    th:text="${p.nomor_penerbangan}">
+                                            </option>
+                                        </select>
+                                        </div>
+                                    </div><br>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </form>
+                            <h6 class="text-success" align="center" th:text="${berhasil}"></h6>
+                            <table class="table">
+                                <thead style="background-color: #3d94d2">
+                                <tr style="color: white">
+                                    <th>No</th>
+                                    <th>Nomor Penerbangan</th>
+                                    <th>Bandara Asal</th>
+                                    <th>Bandara Tujuan</th>
+                                    <th>Waktu Berangkat</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="penerbangan, iterationStatus : ${pesawatPenerbangan}"
+                                    th:style="${iterationStatus.even} ? 'font-weight:bold;'">
+                                    <td th:text="${penerbangan.id}"></td>
+                                    <td th:text="${penerbangan.nomor_penerbangan}"></td>
+                                    <td th:text="${penerbangan.kode_bandara_asal}"></td>
+                                    <td th:text="${penerbangan.kode_bandara_tujuan}"></td>
+                                    <td th:text="${penerbangan.waktu_berangkat}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+</html>

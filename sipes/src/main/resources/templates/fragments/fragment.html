@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <head th:fragment="css">
+        <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+    </head>
+
+    <head th:fragment="js">
+        <script
+                src="https://code.jquery.com/jquery-3.4.1.min.js"
+                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCjo="
+                crossorigin="anonymous"
+        ></script>
+        <script src="http://getbootstrap.com/docs/4.1/assets/js/vendor/popper.min.js"></script>
+        <script th:src="@{/js/bootstrap.min.js}"></script>
+    </head>
+</head>
+<body>
+<nav
+        th:fragment="navbar(NamaPage)"
+        class="navbar navbar-expand-lg navbar-dark" style="background-color: #3d94d2"
+>
+    <a class="navbar-brand font-weight-bold" style="color: white" href="/">SIPESAWAT</a>
+    <button class="navbar-toggler" aria-expanded="false" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+<!--    <button-->
+<!--            class="navbar-toggler"-->
+<!--            type="button"-->
+<!--            data-toggle="collapse"-->
+<!--            data-target="#navbarNavAltMarkup"-->
+<!--            aria-controls="navbarNavAltMarkup"-->
+<!--            aria-expanded="false"-->
+<!--            aria-label="Toggle navigation"-->
+<!--    >-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto navbar navbar-default">
+            <li class="nav-item">
+                <a class="nav-item nav-link active" th:href="@{/}">
+                    Home<span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" th:href="@{/pesawat}">
+                    Pesawat<span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" th:href="@{/penerbangan}">
+                    Penerbangan<span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" th:href="@{/pesawat/pesawat-tua}">
+                    Cari<span class="sr-only">(current)</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link active" th:href="@{/pesawat/filter/}">
+                    Filter<span class="sr-only">(current)</span>
+                </a>
+            </li>
+
+
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <a th:text="${NamaPage}" class="nav-item nav-link active" th:href="@{/}">
+                <span class="sr-only">(current)</span>
+            </a>
+        </ul>
+    </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+<!--    <object th:include="fragments/fragment :: bootstrap" th:remove="tag"></object>-->
+</head>
+
+<body>
+<!--    <nav th:replace="fragments/fragment :: navbar('Home')"></nav>-->
+    <div class="container align-content-center">
+        <div class="jumbotron" style="margin-top: 5vw; background-color: #3d94d2">
+            <h2 class="font-weight-bold" style="color: white;text-align: center">Selamat Datang di SIPESAWAT!</h2>
+        </div>
+        <div>
+            <h3 class="font-weight-bold" style="text-align: center">Daftar Fitur:</h3>
+        </div>
+        <br>
+        <div class="row justify-content-center">
+            <div style="margin-left: 2vw">
+                <a class="btn btn-primary" th:href="@{/pesawat}">Pesawat</a>
+            </div>
+            <div style="margin-left: 2vw">
+                <a class="btn btn-primary" th:href="@{/penerbangan}">Penerbangan</a>
+            </div>
+            <div style="margin-left: 2vw">
+                <a class="btn btn-primary" th:href="@{/pesawat/pesawat-tua}">Cari</a>
+            </div>
+            <div style="margin-left: 2vw">
+                <a class="btn btn-primary" th:href="@{/pesawat/filter}">Filter</a>
+            </div>
+            <div style="margin-left: 2vw">
+                <a class="btn btn-primary" th:href="@{/bonus}">Bonus</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

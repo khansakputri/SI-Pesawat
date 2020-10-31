@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Penerbangan</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar('View Penerbangan')"></nav>
+<div class="container-fluid">
+    <section>
+        <div class="align-content-center">
+            <h2 style="text-align: center; margin-top: 3vw">Detail Pesawat</h2><br>
+            <div content="justify-content-center">
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Nomor Penerbangan</div>
+                    <div class="col-md-4" th:text="': ' + ${penerbangan.nomor_penerbangan}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Kode Bandara Asal</div>
+                    <div class="col-md-4" th:text="': ' + ${penerbangan.kode_bandara_asal}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Kode Bandara Tujuan</div>
+                    <div class="col-md-4" th:text="': ' + ${penerbangan.kode_bandara_tujuan}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Waktu berangkat</div>
+                    <div class="col-md-4" th:text="': ' + ${penerbangan.waktu_berangkat}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row py-2">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4 font-weight-bold">Nomor Seri</div>
+                    <div class="col-md-4" th:text="': ' + ${no_seri}"></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+<!--        <div class="card">-->
+<!--            <div class="card-header">Detail Penerbangan</div>-->
+<!--            <div class="card-body">-->
+<!--                <p th:text="'Kode Penerbangan: ' + ${penerbangan.nomor_penerbangan}"></p>-->
+<!--                <p th:text="'Kode Bandara Asal: ' + ${penerbangan.kode_bandara_asal}"></p>-->
+<!--                <p th:text="'Kode Bandara Tujuan: ' + ${penerbangan.kode_bandara_tujuan}"></p>-->
+<!--                <p th:text="'Waktu Berangkat: ' + ${penerbangan.waktu_berangkat}"></p>-->
+<!--                <p th:text="'No Seri: ' + ${no_seri}"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+        </div>
+    </section>
+</div>
+</body>
+</html>
